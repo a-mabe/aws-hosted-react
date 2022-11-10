@@ -54,7 +54,9 @@ jobs:
 
       - name: Terraform Plan
         id: plan
-        run: terraform plan -no-color ./terraform
+        run: |
+          cd ./terraform
+          terraform plan -no-color
         continue-on-error: true
 
       - name: Terraform Plan Status
