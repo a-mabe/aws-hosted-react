@@ -37,6 +37,9 @@ resource "aws_s3_object" "static_files" {
   source       = each.value.source_path
   content      = each.value.content
   etag         = each.value.digests.md5
+  depends_on = [
+    aws_s3_bucket.app_bucket
+  ]
 }
 
 # Output the endpoint
