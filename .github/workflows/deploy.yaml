@@ -89,4 +89,4 @@ jobs:
       - name: Terraform Apply
         run: |
           cd ./terraform
-          terrafrom apply --auto-approve
+          terraform apply --auto-approve
