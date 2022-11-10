@@ -62,7 +62,7 @@ jobs:
   apply:
     name: 'Apply'
     runs-on: ubuntu-latest
-    needs: deploy
+    needs: plan
     environment:
         name: staging # Requires approval
     steps:
