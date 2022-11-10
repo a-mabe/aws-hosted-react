@@ -15,7 +15,6 @@ jobs:
 
   plan:
     runs-on: ubuntu-latest
-    needs: build-app
     defaults:
       run:
         shell: bash
