@@ -21,17 +21,21 @@ jobs:
         shell: bash
         working-directory: .
     steps:
-      - name: Git checkout
-        uses: actions/checkout@v3
-
-      - name: Node
-        uses: actions/setup-node@v3
-
-      - name: Build app
-        run: |
-          cd app
-          npm install
-          npm run build
+      - uses: actions/checkout@v2
+      
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: cd app
+      - run: npm install
+      - run: npm run build
+      
+#       - uses: FirebaseExtended/action-hosting-deploy@v0
+#         with:
+#           repoToken: '${{ secrets.GITHUB_TOKEN }}'
+#           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ACTIONS_FIREBASE_WORKSHOP }}'
+#           channelId: live
+#           projectId: actions-firebase-workshop
 
 
   #     - name: Configure AWS credentials from AWS account
