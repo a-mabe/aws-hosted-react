@@ -62,9 +62,15 @@ jobs:
   apply:
     name: 'Apply'
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: .
     needs: plan
     environment:
         name: staging # Requires approval
     steps:
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        run: |
+          cd ./terraform
+          terraform apply -auto-approve
