@@ -27,8 +27,6 @@ jobs:
         uses: actions/setup-node@v3
 
       - name: Build app   
-        with:
-          node-version: 16
         run: |
           cd app
           npm install
