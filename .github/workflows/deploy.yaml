@@ -67,4 +67,4 @@ jobs:
         name: staging # Requires approval
     steps:
       - name: Terraform Apply
-        run: terraform apply -auto-approve ./terraform
+        run: terraform apply -auto-approve
