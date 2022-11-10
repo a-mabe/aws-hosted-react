@@ -12,7 +12,7 @@ env:
   TF_LOG: INFO
   AWS_REGION: ${{ secrets.AWS_REGION }}
 jobs:
-  deploy:
+  plan:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -48,10 +48,6 @@ jobs:
           cd ./terraform
           terraform init -backend-config="bucket=${AWS_BUCKET_NAME}" -backend-config="key=${AWS_BUCKET_KEY_NAME}" -backend-config="region=${AWS_REGION}"
 
-#       - name: Terraform Validate
-#         id: validate
-#         run: terraform validate -no-color ./terraform
-
       - name: Terraform Plan
         id: plan
         run: |
@@ -71,4 +67,6 @@ jobs:
         name: staging # Requires approval
     steps:
       - name: Terraform Apply
-        run: echo "terraform apply -auto-approve ./terraform"
+        run: |
+          cd ./terraform
+          terraform apply -auto-approve ./terraform
