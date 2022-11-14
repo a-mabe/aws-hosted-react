@@ -103,9 +103,6 @@ jobs:
         with:
           name: react-build
 
-      - name: Find build
-        run: ls
-
       # - name: Configure AWS credentials from AWS account
       #   uses: aws-actions/configure-aws-credentials@v1
       #   with:
