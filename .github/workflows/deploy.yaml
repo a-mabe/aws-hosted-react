@@ -38,7 +38,6 @@ jobs:
           name: react-build
           path: app/build
 
-      # Download previously shared build
       - name: Get build artifact
         uses: actions/download-artifact@v1
         with:
@@ -105,6 +104,12 @@ jobs:
             ```diff
             ${{ env.PLAN }}
             ```
+
+      - name: Share pla artifact inside workflow
+        uses: actions/upload-artifact@v1
+        with:
+          name: tfplan
+          path: tfplan
 
       - name: Post Plan Failure
         if: steps.plan.outcome == 'failure'
