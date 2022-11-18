@@ -172,7 +172,6 @@ jobs:
           path: ./terraform/tfplan
 
       - name: Apply Terraform
-        if: steps.plan.outcome == 'success'
         id: apply
         continue-on-error: true
         run: |
