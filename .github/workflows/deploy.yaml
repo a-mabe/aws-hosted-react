@@ -105,11 +105,11 @@ jobs:
             ${{ env.PLAN }}
             ```
 
-      - name: Share pla artifact inside workflow
+      - name: Share plan artifact inside workflow
         uses: actions/upload-artifact@v1
         with:
           name: tfplan
-          path: tfplan
+          path: ./tfplan
 
       - name: Post Plan Failure
         if: steps.plan.outcome == 'failure'
