@@ -169,6 +169,7 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: tfplan
+          path: ./terraform/tfplan
 
       - name: Apply Terraform
         if: steps.plan.outcome == 'success'
