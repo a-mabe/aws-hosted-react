@@ -176,7 +176,6 @@ jobs:
         continue-on-error: true
         run: |
           cd ./terraform
-          ls tfplan
           terraform apply \
             -input=false \
             -no-color \
