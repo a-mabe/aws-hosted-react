@@ -180,3 +180,16 @@ jobs:
             -input=false \
             -no-color \
             tfplan
+
+      - name: Post Apply Failure
+        if: steps.apply.outcome == 'failure'
+        uses: mshick/add-pr-comment@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: 'github-actions[bot]'
+          message: |
+            Apply failed.
+
+            ```
+            ${{ steps.apply.outputs.stderr }}
+            ```          
