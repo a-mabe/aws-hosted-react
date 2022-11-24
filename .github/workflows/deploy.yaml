@@ -4,13 +4,15 @@ on:
     branches:
       - main
 permissions:
-      id-token: write # This is required for aws oidc connection
-      contents: read # This is required for actions/checkout
-      pull-requests: write # This is required for gh bot to comment PR
+  id-token: write # This is required for aws oidc connection
+  contents: read # This is required for actions/checkout
+  pull-requests: write # This is required for gh bot to comment PR
 
 env:
   TF_LOG: INFO
   AWS_REGION: ${{ secrets.AWS_REGION }}
+  TF_VARS_bucket_name: ${{ secrets.TF_VARS_BUCKET_NAME }}
+
 jobs:
 
   plan:
