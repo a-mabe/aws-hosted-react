@@ -4,22 +4,14 @@ resource "aws_s3_bucket" "app_bucket" {
   force_destroy = true
 }
 
-resource "aws_s3_bucket_acl" "app_bucket_acl" {
+# Block public access
+resource "aws_s3_bucket_public_access_block" "block_public_access" {
   bucket = aws_s3_bucket.app_bucket.id
-  acl    = "public-read"
-}
 
-# Setup the website configuration
-resource "aws_s3_bucket_website_configuration" "app_bucket_web_config" {
-  bucket = aws_s3_bucket.app_bucket.bucket
-
-  index_document {
-    suffix = "index.html"
-  }
-
-  error_document {
-    key = "index.html"
-  }
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
 }
 
 # Add the website files
@@ -30,7 +22,6 @@ module "website_files" {
 
 resource "aws_s3_object" "static_files" {
   for_each     = module.website_files.files
-  acl          = "public-read"
   bucket       = var.bucket_name
   key          = each.key
   content_type = each.value.content_type
@@ -40,9 +31,4 @@ resource "aws_s3_object" "static_files" {
   depends_on = [
     aws_s3_bucket.app_bucket
   ]
-}
-
-# Output the endpoint
-output "website_endpoint" {
-  value = aws_s3_bucket_website_configuration.app_bucket_web_config.website_endpoint
 }
