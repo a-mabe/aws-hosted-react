@@ -10,17 +10,17 @@ resource "aws_s3_bucket" "app_bucket" {
 # }
 
 # Setup the website configuration
-resource "aws_s3_bucket_website_configuration" "app_bucket_web_config" {
-  bucket = aws_s3_bucket.app_bucket.bucket
+# resource "aws_s3_bucket_website_configuration" "app_bucket_web_config" {
+#   bucket = aws_s3_bucket.app_bucket.bucket
 
-  index_document {
-    suffix = "index.html"
-  }
+#   index_document {
+#     suffix = "index.html"
+#   }
 
-  error_document {
-    key = "index.html"
-  }
-}
+#   error_document {
+#     key = "index.html"
+#   }
+# }
 
 # Add the website files
 module "website_files" {
