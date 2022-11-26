@@ -4,10 +4,10 @@ resource "aws_s3_bucket" "app_bucket" {
   force_destroy = true
 }
 
-resource "aws_s3_bucket_acl" "app_bucket_acl" {
-  bucket = aws_s3_bucket.app_bucket.id
-  acl    = "public-read"
-}
+# resource "aws_s3_bucket_acl" "app_bucket_acl" {
+#   bucket = aws_s3_bucket.app_bucket.id
+#   acl    = "public-read"
+# }
 
 # Setup the website configuration
 resource "aws_s3_bucket_website_configuration" "app_bucket_web_config" {
@@ -30,7 +30,7 @@ module "website_files" {
 
 resource "aws_s3_object" "static_files" {
   for_each     = module.website_files.files
-  acl          = "public-read"
+  # acl          = "public-read"
   bucket       = var.bucket_name
   key          = each.key
   content_type = each.value.content_type
