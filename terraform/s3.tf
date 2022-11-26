@@ -30,7 +30,6 @@ module "website_files" {
 
 resource "aws_s3_object" "static_files" {
   for_each     = module.website_files.files
-  # acl          = "public-read"
   bucket       = var.bucket_name
   key          = each.key
   content_type = each.value.content_type
