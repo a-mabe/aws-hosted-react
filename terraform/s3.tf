@@ -40,8 +40,3 @@ resource "aws_s3_object" "static_files" {
     aws_s3_bucket.app_bucket
   ]
 }
-
-# Output the endpoint
-output "website_endpoint" {
-  value = aws_s3_bucket_website_configuration.app_bucket_web_config.website_endpoint
-}
