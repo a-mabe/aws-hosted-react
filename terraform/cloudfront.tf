@@ -86,7 +86,7 @@ resource "aws_cloudfront_distribution" "cf_distribution" {
     }
   }
 
-  tags {
+  tags = {
     Project = "aws-hosted-react"
   }
 }
