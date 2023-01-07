@@ -87,7 +87,7 @@ resource "aws_cloudfront_distribution" "cf_distribution" {
   }
 
   tags = {
-    Project = "aws-hosted-react"
-    Environment = var.environment
+    Project     = "aws-hosted-react"
+    Environment = "${var.environment}"
   }
 }
