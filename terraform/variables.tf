@@ -4,6 +4,12 @@ variable "bucket_name" {
   default     = "aws-hosted-react"
 }
 
+variable "environment" {
+  type        = string
+  description = "Deploy environment, e.g. staging or production."
+  default     = "staging"
+}
+
 variable "website_root" {
   type        = string
   description = "Path to the root of website content"
