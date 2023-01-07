@@ -5,6 +5,7 @@ resource "aws_s3_bucket" "app_bucket" {
 
   tags = {
     Project = "aws-hosted-react"
+    Environment = "${var.environment}"
   }
 }
 
