@@ -14,6 +14,7 @@ env:
   TF_LOG: INFO
   AWS_REGION: ${{ secrets.AWS_REGION }}
   TF_VAR_bucket_name: ${{ secrets.TF_VAR_BUCKET_NAME }}
+  TF_VAR_environment: "production"
 
 jobs:
 
