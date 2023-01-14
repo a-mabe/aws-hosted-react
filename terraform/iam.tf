@@ -1,4 +1,4 @@
-data "aws_iam_policy_document" "flash_cards_react_cloudfront_policy_doc" {
+data "aws_iam_policy_document" "aws_hosted_react_cloudfront_policy_doc" {
   statement {
     actions   = ["s3:GetObject"]
     resources = ["${aws_s3_bucket.app_bucket.arn}/*"]
@@ -10,7 +10,7 @@ data "aws_iam_policy_document" "flash_cards_react_cloudfront_policy_doc" {
   }
 }
 
-resource "aws_s3_bucket_policy" "flash_cards_react_cloudfront_policy" {
+resource "aws_s3_bucket_policy" "aws_hosted_react_cloudfront_policy" {
   bucket = aws_s3_bucket.app_bucket.id
-  policy = data.aws_iam_policy_document.flash_cards_react_cloudfront_policy_doc.json
+  policy = data.aws_iam_policy_document.aws_hosted_react_cloudfront_policy_doc.json
 }
