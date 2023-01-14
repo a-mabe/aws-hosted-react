@@ -1,7 +1,13 @@
 variable "bucket_name" {
   type        = string
   description = "Name of the bucket to store the React app."
-  default     = "aws-hosted-react"
+  default     = "flash-cards-react"
+}
+
+variable "project_name" {
+  type        = string
+  description = "Name of the project, for tagging purposes."
+  default     = "flash-cards-react"
 }
 
 variable "environment" {

@@ -4,7 +4,7 @@ resource "aws_s3_bucket" "app_bucket" {
   force_destroy = true
 
   tags = {
-    Project     = "aws-hosted-react"
+    Project     = "${var.project_name}"
     Environment = "${var.environment}"
   }
 }
